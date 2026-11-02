@@ -16,6 +16,7 @@ services:
       dockerfile: production/docker/Dockerfile
     env_file:
       - .env
+      - ../../../.env
     environment:
       - CITYDB_MCP_VARIANT=byod
     ports:
