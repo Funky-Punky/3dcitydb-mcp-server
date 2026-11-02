@@ -4,6 +4,8 @@ services:
   # The agent connects to a pre-existing 3DCityDB.
   # Set DATABASE_URL in production/.env (copy from production/.env.example).
   citydb-agent:
+    profiles:
+      - mcp
     image: ghcr.io/tum-gis/3dcitydb-mcp-agent:latest
     # image: citydb-mcp-agent:local
     # build: section kept for local builds (see README for Windows note).
@@ -22,4 +24,5 @@ services:
       - ./data:/app/data
     restart: unless-stopped
     user: root
-
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
